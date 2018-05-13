@@ -1,0 +1,67 @@
+[/=============================================================================
+    Copyright (C) 2013-2016 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_equality_comparable `is_equality_comparable`]
+
+[section Synopsis]
+[reference__is_equality_comparable]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the equality and inequality
+operators are valid boolean expressions when they take in either of the
+specified types as their first argument and the other specified type as their
+second argument.  This metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:default Default argument types]
+[reference__is_equality_comparable__fwd]
+
+If the second type is not specified, then it defaults to the first type: in
+other words, this metafunction checks if the specified type models the
+__Equality_Comparable__ concept.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_equality_comparable__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__concept_traits_fwd__header__>
+``
+[endsect]
+
+[section Test]
+This metafunction is somewhat more permissive than the __has_equal_to__ and
+__has_not_equal_to__ metafunctions offered by __Boost_TypeTraits__.
+
+[test__is_equality_comparable__minimal]
+
+As expected, all primitive types are __Equality_Comparable__.
+
+[test__is_equality_comparable__builtin]
+
+This metafunction can be useful for double-checking the type correctness of
+user-defined and standard-defined arithmetic types, iterator models, and so on.
+
+[test__is_equality_comparable__other]
+
+The full source file can be found at __is_equality_comparable__test_source__.
+[endsect]
+
+[endsect] [/ is_equality_comparable]
+

@@ -1,0 +1,69 @@
+[/=============================================================================
+    Copyright (C) 2013-2016 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_less_than_comparable `is_less_than_comparable`]
+
+[section Synopsis]
+[reference__is_less_than_comparable]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the less-than, greater-than,
+less-than-or-equal-to, and greater-than-or-equal-to operators are valid
+boolean expressions when they take in either of the specified types as their
+first argument and the other specified type as their second argument.  This
+metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:default Default argument types]
+[reference__is_less_than_comparable__fwd]
+
+If the second type is not specified, then it defaults to the first type: in
+other words, this metafunction checks if the specified type models the
+__Less_Than_Comparable__ concept.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_less_than_comparable__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__concept_traits_fwd__header__>
+``
+[endsect]
+
+[section Test]
+This metafunction is somewhat more permissive than the __has_less_than__,
+__has_greater_than__, __has_less_equal__, and __has_greater_equal__
+metafunctions offered by __Boost_TypeTraits__.
+
+[test__is_less_than_comparable__minimal]
+
+As expected, the primitive types model the __Less_Than_Comparable__ concept.
+
+[test__is_less_than_comparable__builtin]
+
+This metafunction can be useful for double-checking the type correctness of
+user-defined and standard-defined arithmetic types, iterator models, and so on.
+
+[test__is_less_than_comparable__other]
+
+The full source file can be found at __is_less_than_comparable__test_source__.
+[endsect]
+
+[endsect] [/ is_less_than_comparable]
+

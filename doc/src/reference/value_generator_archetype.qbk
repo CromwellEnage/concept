@@ -1,0 +1,29 @@
+[/============================================================================
+    Copyright (C) 2014-2017 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:value_generator_archetype `value_generator_archetype`]
+
+[section Synopsis]
+[reference__value_generator_archetype]
+[endsect]
+
+[section Description]
+Minimalist stub model of the __Value_Generator__ concept.
+
+The following excerpt can be found in __value_generator_archetype__test__.
+[test__value_generator_archetype]
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__value_generator_archetype__header__>
+``
+[endsect]
+
+[endsect] [/ value_generator_archetype]
+

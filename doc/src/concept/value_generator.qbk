@@ -1,0 +1,65 @@
+[/============================================================================
+    Copyright (C) 2014-2017 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:value_generator Value Generator Concept]
+
+[section Description]
+A [*Value Generator] is a function object that returns values within a range
+that is specific to the generator type.  The [*Value Generator] concept has
+the same requirements as the __Uniform_Random_Bit_Generator__ concept, except
+that it does not require the values returned to be uniform, random, or even
+numeric.
+[endsect]
+
+[section Requirements]
+The type `G` models the [*Value Generator] concept if, given a value `g` of
+type `G`, the following expressions are valid and exhibit the specified
+effects.
+
+[table
+    [[Expression][Description][Type requirements][Complexity]]
+    [
+        [`G::result_type`]
+        [Defines the type of the values that `G` may generate.]
+        [[^_bct_is_less_than_comparable_<G::result_type>]]
+        [Compile-time]
+    ]
+    [
+        [`G::min()`]
+        [
+            Returns the minimum value that the function call operator may
+            return.
+        ]
+        [[^_std_is_same_<_decltype_(G::min()),G::result_type>]]
+        []
+    ]
+    [
+        [`G::max()`]
+        [
+            Returns the maximum value that the function call operator may
+            return.
+        ]
+        [[^_std_is_same_<_decltype_(G::max()),G::result_type>]]
+        []
+    ]
+    [
+        [`g()`]
+        [Returns a value in the closed interval `[G::min(), G::max()]`.]
+        [[^_std_is_same_<_decltype_(g()),G::result_type>]]
+        [Amortized constant runtime]
+    ]
+]
+[endsect]
+
+[section Models]
+* __concept_value_generator_archetype__
+* all models of the __Uniform_Random_Bit_Generator__ concept
+[endsect]
+
+[endsect] [/ value_generator]
+

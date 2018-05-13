@@ -1,0 +1,46 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:has_num_type `has_num_type`]
+
+[section Synopsis]
+[reference__has_num_type]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the specified type is defined
+with a nested `num_type` type definition that is not `void`.  This
+metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__has_num_type__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__nested_type__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[endsect] [/ has_num_type]
+

@@ -1,0 +1,94 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:is_addable `is_addable`]
+
+[section Synopsis]
+[reference__is_addable]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the first type is addable by the
+second type.  (This metafunction does not check for commutativity, which is not
+implemented by the reverse iterator types provided by __Boost_Intrusive__ and
+__Boost_Container__.)  If the first type is mutable, then it must also be
+addition-assignable by the second type.  This metafunction evaluates to
+__mpl_false__ otherwise.
+[endsect]
+
+[section:default Default argument types]
+[reference__is_addable__fwd]
+
+If the second type is not specified, then it defaults to the first type.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_addable__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__query__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[section Test]
+This metafunction is somewhat more permissive than the __has_plus__ and
+__has_plus_assign__ metafunctions offered by __Boost_TypeTraits__.
+
+[test__is_addable__minimal]
+
+All primitive types are addable to lvalues of the same type.
+
+[test__is_addable__builtin]
+
+All __Boost_Multiprecision__ numeric types are addable to lvalues of the same
+type.
+
+[test__is_addable__multiprecision]
+
+Only __Indexable_Iterator__ archetypes and
+__Random_Access_Traversal_Iterator__ archetypes are addable to instances of
+their difference types.
+
+[test__is_addable__archetypes]
+
+All iterators over __Random_Access_Container__ models provided by the C++
+standard library are addable to instances of their difference types.
+
+[test__is_addable__std_iterators]
+[test__is_addable__ublas_vectors]
+[test__is_addable__ublas_matrices]
+[test__is_addable__ublas_storage]
+
+This metafunction can be useful for double-checking the type correctness of
+user-defined and standard-defined arithmetic types, models of the
+__Random_Access_Iterator__ and __Random_Access_Traversal_Iterator__ concepts,
+and so on.
+
+[test__is_addable__other]
+
+The full source file can be found at __is_addable__test_source__.
+[endsect]
+
+[endsect] [/ is_addable]
+

@@ -1,0 +1,46 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:propagate_on_container_cp `propagate_on_container_copy_assignment`]
+
+[section Synopsis]
+[reference__propagate_on_container_copy_assignment]
+[endsect]
+
+[section Description]
+This metafunction converts the `propagate_on_container_copy_assignment` type
+nested in the __std_allocator_traits__ of the specified type to the
+corresponding __Boolean_Integral_Constant__.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__propagate_on_container_op__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__trivial_access__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[endsect] [/ propagate_on_container_copy_assignment]
+

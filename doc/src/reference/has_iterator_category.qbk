@@ -1,0 +1,47 @@
+[/============================================================================
+    Copyright (C) 2012-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:has_iterator_category `has_iterator_category`]
+
+[section Synopsis]
+[reference__has_iterator_category]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the __std_iterator_traits__ of
+the specified type is defined with a nested `iterator_category` type
+definition that is not `void`.  This metafunction evaluates to __mpl_false__
+otherwise.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__has_iterator_category__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__nested_type__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits_fwd__header__>
+``
+[endsect]
+
+[endsect] [/ has_iterator_category]
+

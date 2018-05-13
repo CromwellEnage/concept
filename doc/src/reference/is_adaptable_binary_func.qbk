@@ -1,0 +1,74 @@
+[/=============================================================================
+    Copyright (C) 2011-2016 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_adaptable_binary_func `is_adaptable_binary_function`]
+
+[section Synopsis]
+[reference__is_adaptable_binary_function]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the type `T` models the
+__Adaptable_Binary_Function__ concept.  If the type `ResultPlaceholderExpr` is
+specified, then it must evaluate to __mpl_true__ when it takes in `T` as
+its argument type.  This metafunction evaluates to __mpl_false__
+otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be an __MPL_Lambda_Expression__ that can
+take in `T` as its argument type and evaluate to a type for which
+__bct_is_mpl_boolean_constant__ evaluates to __mpl_true__.
+[endsect]
+
+[section:default Default argument types]
+[reference__is_adaptable_binary_function__fwd]
+
+If the type `ResultPlaceholderExpr` is not specified, then it defaults to a
+__Metafunction_Class__ that always evaluates to __mpl_true__.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_adaptable_binary_function__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__concept_traits_fwd__header__>
+``
+[endsect]
+
+[section Test]
+This metafunction can be used to distinguish binary function adaptors from other
+function adaptors.
+
+[test__is_adaptable_binary_function__std_adaptors]
+
+The full source file can be found at
+__is_adaptable_binary_function__test_source__.
+
+This metafunction can also be used in conjunction with
+__bct_is_boolean_expression__ to determine whether the input type
+models the __Adaptable_Binary_Predicate__ concept.
+
+[test__is_adaptable_binary_predicate__std_adaptors]
+
+The full source file can be found at
+__is_adaptable_binary_function__predicate_test_source__.
+[endsect]
+
+[endsect] [/ is_adaptable_binary_function]
+

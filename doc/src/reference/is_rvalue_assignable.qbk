@@ -1,0 +1,118 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:is_rvalue_assignable `is_rvalue_assignable`]
+
+[section Synopsis]
+[reference__is_rvalue_assignable]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the type `T` implements the
+assignment operator such that the right-hand side is an rvalue reference to an
+object of type `Value`, and if the type `ResultPlaceholderExpr` evaluates to
+__mpl_true__ when passed in the result type of the assignment operator as its
+first argument type and the type `T` as its second argument type.  This
+metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be an __MPL_Lambda_Expression__ that can
+take in the result type of the assignment operator as its first argument type,
+take in `T` as its second argument type, and evaluate to a type for which
+__bct_is_mpl_boolean_constant__ evaluates to __mpl_true__.
+[endsect]
+
+[section:default_args Default argument types]
+[reference__is_rvalue_assignable__fwd]
+
+If the type `Value` is not specified, then it defaults to `T`.
+
+If the type `ResultPlaceholderExpr` is not specified, then this metafunction
+checks if the result type of the assignment operator is convertible to the
+lvalue-reference-to-`const` version of type `T`.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_rvalue_assignable__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__query__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[section Test]
+This metafunction checks for proper return types as far as lvalue references
+and type conversions are concerned, but it does not check for canonical
+correctness by default.  Note that `const`-qualified types are not assignable.
+
+[test__is_rvalue_assignable__minimal]
+
+All primitive types can be assigned to rvalues of the same type.
+
+[test__is_rvalue_assignable__builtin]
+
+On compilers that support __decltype__, this metafunction can be used in
+conjunction with __bct_is_lvalue_reference_of__ to check if the specified type
+implements the move assignment operator.
+
+[test__is_rvalue_assignable__canonical]
+
+All __Boost_Multiprecision__ numeric types can be assigned to rvalues of the
+same type.
+
+[test__is_rvalue_assignable__multiprecision]
+
+All `iterator` and `const_iterator` types nested within __Container__ models
+provided by the C++ standard are assignable to rvalues of the same type, and
+`const_iterator` types are assignable to lvalues of `iterator` types nested
+within the same model, but not the other way around.
+
+[test__is_rvalue_assignable__std_iterators]
+
+All __uBlas_Vector__ models are assignable to rvalues of
+__uBlas_Vector_Expression__ models.
+
+[test__is_rvalue_assignable__ublas_vectors]
+
+All __uBlas_Matrix__ models are assignable to lvalues of
+__uBlas_Matrix_Expression__ models.
+
+[test__is_rvalue_assignable__ublas_matrices]
+
+__uBlas_Storage__ models can be assigned to rvalues of the same type.
+
+[test__is_rvalue_assignable__ublas_storage]
+
+This metafunction can be useful for double-checking the type correctness of
+user-defined and standard-defined assignment operators, or for testing one-way
+convertibility from iterator types to their `const_iterator` variants.
+
+[test__is_rvalue_assignable__other]
+
+The full source file can be found at __is_rvalue_assignable__test_source__.
+[endsect]
+
+[endsect] [/ is_rvalue_assignable]
+

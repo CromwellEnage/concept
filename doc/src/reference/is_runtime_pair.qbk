@@ -1,0 +1,73 @@
+[/=============================================================================
+    Copyright (C) 2013-2015 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_runtime_pair `is_runtime_pair`]
+
+[section Synopsis]
+[reference__is_runtime_pair]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the specified type meets one of
+the following sets of criteria of a runtime pair:
+
+  * The type `T` is defined with nested `first_type` and `second_type` type
+    definitions, the definition of a `first` member data that is bound to
+    `first_type`, and the definition of a `second` member data that is bound to
+    `second_type`.
+  * The type `T` is defined with nested `first_type` and `second_type` type
+    definitions, the definition of a `get_first()` member function whose return
+    type is `first_type`, and the definition of a `get_second()` member
+    function whose return type is `second_type`.
+  * The type `T` is defined with nested `first_type` and `second_type` type
+    definitions, the definition of a `get_left()` member function whose return
+    type is `first_type`, and the definition of a `get_right()` member function
+    whose return type is `second_type`.
+
+This metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_runtime_pair__header__>
+``
+
+--or--
+
+``
+#include <__ds_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__ds_traits_fwd__header__>
+``
+[endsect]
+
+[section Test]
+Heterogeneous container types other than __std_pair__ do not meet the criteria
+of a runtime pair.
+
+[test__is_runtime_pair__pairs_and_heterogeneous_containers]
+
+The value type of many __Container__ models, including but not limited to
+__Pair_Associative_Container__ models, is a runtime pair.
+
+[test__is_runtime_pair__value_types]
+
+A __Range__ model can be easily implemented as a __std_pair__ of iterator
+types--but this is not the only way.
+
+[test__is_runtime_pair__ranges]
+
+The full source file can be found at __is_runtime_pair__test_source__.
+[endsect]
+
+[endsect] [/ is_runtime_pair]
+

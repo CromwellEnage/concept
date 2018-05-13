@@ -1,0 +1,65 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:is_raw_pointer_of `is_raw_pointer_of`]
+
+[section Synopsis]
+[reference__is_raw_pointer_of]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the type
+`ResultPlaceholderExpr` evaluates to either __mpl_true__ or __std_true_type__
+when passed in the pointer version of type `T2` as its first argument type and
+the type `T1` as its second argument type.  This metafunction evaluates to
+__mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be a binary __MPL_Lambda_Expression__
+that can take in the pointer version of `T2` as its first argument type, take
+in `T1` as its second argument type, and evaluate to a type for which either
+__bct_is_mpl_boolean_constant__ or __bct_is_std_boolean_constant__ evaluates
+to __mpl_true__.
+[endsect]
+
+[section:default_args Default argument types]
+[reference__is_raw_pointer_of__fwd]
+
+If the type `ResultPlaceholderExpr` is not specified, then this metafunction
+checks if the type `T2` is `const`-qualified and the type `T1` is the same as
+the pointer-to-`const` version of type `T2`, or if the type `T2` is mutable
+and the type `T1` is the same as the mutable pointer version of type `T2`.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_raw_pointer_of__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__introspection__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[endsect] [/ is_raw_pointer_of]
+

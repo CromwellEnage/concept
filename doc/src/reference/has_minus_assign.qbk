@@ -1,0 +1,67 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:has_minus_assign `has_minus_assign`]
+
+[section Synopsis]
+[reference__has_minus_assign]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the type `T` is defined with a
+`minus_assign` member function that takes in an lvalue reference to `Value` as
+its single argument, and if the type `ResultPlaceholderExpr` evaluates to
+__mpl_true__ when passed in the result type of the `minus_assign` member
+function as its argument type.  This metafunction evaluates to __mpl_false__
+otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be a unary __MPL_Lambda_Expression__
+that can take in the result type of the `minus_assign` member function as its
+argument type and evaluate to a type for which __bct_is_mpl_boolean_constant__
+evaluates to __mpl_true__.
+[endsect]
+
+[section:default_args Default argument types]
+[reference__has_minus_assign__fwd]
+
+If the type `Value` is not specified, then it defaults to the
+lvalue-reference-to-`const` version of type `T`.
+
+If the type `ResultPlaceholderExpr` is not specified, then this metafunction
+checks if the result type of the `minus_assign` member function is convertible
+to the lvalue-reference-to-`const` version of type `T`.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__has_minus_assign__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__member_function__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[endsect] [/ has_minus_assign]
+

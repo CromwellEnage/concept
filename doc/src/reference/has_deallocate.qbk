@@ -1,0 +1,49 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:has_deallocate `has_deallocate`]
+
+[section Synopsis]
+[reference__has_deallocate]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the type `T` is defined with
+either a nested `value_type` or a nested `pointer` type, and if the type `T`
+is defined with a `deallocate` member function that takes in an rvalue
+reference of type __bct_pointer_of__`<T>` as its first argument and an rvalue
+reference of type __bct_allocator_size_of__`<T>` as its second argument.  This
+metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__has_deallocate__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__member_function__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[endsect] [/ has_deallocate]
+

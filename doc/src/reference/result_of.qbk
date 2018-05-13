@@ -1,0 +1,83 @@
+[article cxx14_result_of
+    [quickbook 1.6]
+    [copyright 2014-2018 Cromwell Enage]
+    [license
+        Distributed under the Boost Software License, Version 1.0.
+        (See accompanying file LICENSE_1_0.txt or copy at
+        [@http://www.boost.org/LICENSE_1_0.txt])
+    ]
+]
+
+
+[def __cxx14_result_of_fwd__header__ [@../../../../boost/utility/cxx14_result_of_fwd.hpp boost/utility/cxx14_result_of_fwd.hpp]]
+[def __cxx14_result_of__header__ [@../../../../boost/utility/cxx14_result_of.hpp boost/utility/cxx14_result_of.hpp]]
+[def __decltype__ [@http://en.cppreference.com/w/cpp/language/decltype `decltype`]]
+[def __std_result_of__ [@http://en.cppreference.com/w/cpp/types/result_of `std::result_of`]]
+[def __BOOST_TYPEOF__ [@http://www.boost.org/doc/html/typeof.html [*Boost.Typeof]]]
+[def _BOOST_TYPEOF_KEYWORD_ [@http://www.boost.org/doc/html/typeof/refe.html#typeof.typo BOOST_TYPEOF_KEYWORD]]
+[def _decltype_ [@http://en.cppreference.com/w/cpp/language/decltype decltype]]
+[def _bct_has_result_type_ [@../../../../libs/concept/doc/html/concept/reference/traits/introspection/nested_type/has_result_type.html boost::concept::traits::has_result_type]]
+[def _bct_result_type_of_ [@../../../../libs/concept/doc/html/concept/reference/traits/introspection/nested_type/result_type_of.html boost::concept::traits::result_type_of]]
+[def _mpl_eval_if_ [@http://www.boost.org/libs/mpl/doc/refmanual/eval-if.html boost::mpl::eval_if]]
+[def _mpl_identity_ [@http://www.boost.org/libs/mpl/doc/refmanual/identity.html boost::mpl::identity]]
+[def _forward_ [@http://www.boost.org/doc/html/boost/forward.html boost::forward]]
+[def _declval_ [@boost:libs/type_traits/doc/html/boost_typetraits/reference/declval.html boost::declval]]
+
+[import ../../../../../boost/utility/cxx14_result_of.hpp]
+[import ../../../../../libs/utility/test/cxx14_result_of.cpp]
+
+
+[/==============================================]
+[section:metafunc_synopsis Metafunction Synopsis]
+[/==============================================]
+
+[reference__cxx14_result_of]
+
+[endsect]
+
+
+[/=============================================]
+[section:metafunc_desc Metafunction Description]
+[/=============================================]
+
+This metafunction returns the result type of a function pointer, a member
+function pointer, a member object pointer, or a function object.  If the input
+type is none of these, then this metafunction will not have a nested `type`
+definition.  The behavior of this metafunction complies with the C++-14
+standard by matching its specification of __std_result_of__.  Note that if the
+__decltype__ keyword is not supported, then this metafunction will fall back
+on native __BOOST_TYPEOF__ support, which removes references and `const`
+qualifiers from the result type.
+
+[test__cxx14_result_of]
+
+In addition, instead of reporting a compiler error when the function or
+function call operator is not declared for the specified parameters, this
+metafunction will simply not have a nested `type` definition as well.
+
+[test__cxx14_result_of__no_return]
+
+[endsect]
+
+
+[/=================================]
+[section:declaration Where declared]
+[/=================================]
+
+``
+#include <__cxx14_result_of_fwd__header__>
+``
+
+[endsect]
+
+
+[/===============================]
+[section:definition Where defined]
+[/===============================]
+
+``
+#include <__cxx14_result_of__header__>
+``
+
+[endsect]
+

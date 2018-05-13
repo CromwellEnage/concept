@@ -1,0 +1,55 @@
+[/=============================================================================
+    Copyright (C) 2014-2016 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_value_generator `is_value_generator`]
+
+[section Synopsis]
+[reference__is_value_generator]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the specified type models the
+__Value_Generator__ concept; furthermore, if the type `ResultPlaceholderExpr`
+is specified, then it must evaluate to __mpl_true__ when it takes in
+[`_cxx14_result_of_<T>] as its argument type.  This metafunction evaluates to
+__mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be an __MPL_Lambda_Expression__ that can
+take in [`_cxx14_result_of_<T>] as its argument type and evaluate to a type for
+which __bct_is_mpl_boolean_constant__ evaluates to __mpl_true__.
+[endsect]
+
+[section:default_args Default argument types]
+[reference__is_value_generator__fwd]
+
+If the type `ResultPlaceholderExpr` is not specified, then this metafunction
+checks if the result type of `T` models the __LessThan_Comparable__ concept.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_value_generator__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__concept_traits_fwd__header__>
+``
+[endsect]
+
+[endsect] [/ is_value_generator]
+

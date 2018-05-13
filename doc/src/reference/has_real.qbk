@@ -1,0 +1,74 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:has_real `has_real`]
+
+[section Synopsis]
+[reference__has_real]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if one of the following are true:
+
+  * The type `T` is `const`-qualified and defined with a `const` or `static`
+    zero-argument `real` member function whose result type is the value type
+    of `T`, and the type `U` is `boost::concept::traits::use_default`.
+  * The type `T` is `const`-qualified and defined with a `const` or `static`
+    zero-argument `real` member function, and the type `U` evaluates to
+    __mpl_true__ when passed in the result type of the `real` member function
+    as its argument type.  See the type requirements below.
+  * The type `T` is mutable and defined with a single-argument `real` member
+    function that takes in the value type of `T` as its argument type, and the
+    type `U` is `boost::concept::traits::use_default`.
+  * The type `T` is mutable and defined with a single-argument `real` member
+    function that takes in the type `U` as its argument type.
+
+This metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+If the type `T` is `const`-qualified, then the type `U`, if specified, must be
+a unary __MPL_Lambda_Expression__ that can take in the result type of the
+`real` member function as its argument type and evaluate to a type for which
+__bct_is_mpl_boolean_constant__ evaluates to __mpl_true__.
+[endsect]
+
+[section:default Default argument types]
+[reference__has_real__fwd]
+
+If the type `T` is `const`-qualified, then `U` is equivalent to
+[^_bct_is_value_type_of_<_mpl_placeholder_,T>].  If the type `T` is mutable,
+then `U` is equivalent to [^_bct_value_type_of_<T>::type] if it exists.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__has_real__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__member_function__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits_fwd__header__>
+``
+[endsect]
+
+[endsect] [/ has_real]
+

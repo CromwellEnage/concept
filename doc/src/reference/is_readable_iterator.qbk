@@ -1,0 +1,51 @@
+[/=============================================================================
+    Copyright (C) 2013-2015 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_readable_iterator `is_readable_iterator`]
+
+[section Synopsis]
+[reference__is_readable_iterator]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if [`_iterator_traits_<T>] is
+defined with a nested `value_type` type definition that is not `void`, and if
+the type `T` is __Assignable__ and defines a dereferencing operator whose
+result type is convertible to the value type.  This metafunction evaluates to
+__mpl_false__ otherwise.
+
+This metafunction does not enforce the other requirements imposed by the
+__Readable_Iterator__ concept.  In particular, it does not check if the type
+`T` is __Copy_Constructible__, or if the type `T` provides indirect access to
+its member data or functions.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_readable_iterator__header__>
+``
+
+--or--
+
+``
+#include <__ds_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__ds_traits_fwd__header__>
+``
+[endsect]
+
+[section Test]
+See __is_readable_iterator__test_source__.
+[endsect]
+
+[endsect] [/ is_readable_iterator]
+

@@ -1,0 +1,60 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:is_accumulator `is_accumulator`]
+
+[section Synopsis]
+[reference__is_accumulator]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the specified type inherits
+from __accumulator_base__ and has a nested `result_type` type definition; this
+metafunction evaluates to __mpl_false__ otherwise.
+
+Use this metafunction to distinguish __Accumulator__ models from other types,
+not to test for correctness of said models.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_accumulator__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__query__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[section Test]
+[/ test__is_accumulator__archetype]
+
+This metafunction will evaluate to __mpl_true__ for all __Accumulator__ models
+provided by __Boost_Accumulators__.
+
+[test__is_accumulator__impls]
+
+The full source file can be found at __is_accumulator__test_source__.
+[endsect]
+
+[endsect] [/ is_accumulator]
+

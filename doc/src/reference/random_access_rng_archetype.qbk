@@ -1,0 +1,29 @@
+[/============================================================================
+    Copyright (C) 2013-2017 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:random_access_rng_archetype `random_access_range_archetype`]
+
+[section Synopsis]
+[reference__random_access_range_archetype]
+[endsect]
+
+[section Description]
+Minimalist stub model of the __Random_Access_Range__ concept.
+
+The following excerpt can be found in __random_access_range_archetype__test__.
+[test__random_access_range_archetype]
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__random_access_range_archetype__header__>
+``
+[endsect]
+
+[endsect] [/ random_access_rng_archetype]
+

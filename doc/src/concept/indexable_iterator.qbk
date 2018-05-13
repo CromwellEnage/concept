@@ -1,0 +1,127 @@
+[/============================================================================
+    Copyright (C) 2013-2017 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:indexable_iterator Indexable Iterator Concept]
+
+[section Description]
+The [*Indexable Iterator] concept has the same requirements as the
+__Random_Access_Traversal_Iterator__ concept, except that it requires the
+iterator category to be convertible to `boost::bidirectional_traversal_tag`
+instead of `boost::random_access_traversal_tag`.  Models of the [*Indexable
+Iterator] concept are not required to implement constant-time increment,
+decrement, addition, addition assignment, subtraction assignment, difference
+computing, element offset access, __Equality_Comparable__, or
+__Comparable__ operators.
+[endsect]
+
+[section Requirements]
+The type `Itr` models the [*Indexable Iterator] concept if:
+  * The type `Itr` also models the __Bidirectional_Iterator__ concept.
+  * The following expressions are valid and respect the stated semantics.
+
+Given:
+  * a value `itr` and two constant values `lhs` and `rhs` of type `Itr`
+  * a value `n` of type [^_std_iterator_traits_<Itr>::difference_type]
+
+[table
+    [[Expression][Return Type][Operational Semantics][Assertion/Precondition]]
+    [
+        [`itr += n`]
+        [`Itr&`]
+        [[```
+        {
+            _std_iterator_traits_<Itr>::difference_type m = n;
+            if (m < 0)
+                while (m++)
+                    --itr;
+            else
+                while (m--)
+                    ++itr;
+            return itr;
+        }
+        ```]]
+        []
+    ]
+    [
+        [`itr + n, n + itr`]
+        [`Itr`]
+        [`{ Itr result = itr; return result += n; }`]
+        []
+    ]
+    [
+        [`itr -= n`]
+        [`Itr&`]
+        [`{ return itr += -n; }`]
+        []
+    ]
+    [
+        [`itr - n`]
+        [`Itr`]
+        [`{ Itr result = itr; return result -= n; }`]
+        []
+    ]
+    [
+        [`lhs - rhs`]
+        [[^_std_iterator_traits_<Itr>::difference_type]]
+        [```
+        {
+             return (
+                 lhs < rhs
+             ) ? _std_distance_(lhs, rhs) : _std_distance_(rhs, lhs);
+        }
+        ```]
+        [`rhs == lhs + (rhs - lhs)`]
+    ]
+    [
+        [`itr[n]`]
+        [convertible to [^_std_iterator_traits_<Itr>::value_type]]
+        [`*(itr + n)`]
+        [`Itr` models the __Readable_Iterator__ concept.]
+    ]
+    [
+        [`itr[n] = v`]
+        [convertible to [^_std_iterator_traits_<Itr>::value_type]]
+        [`*(itr + n) = v`]
+        [`Itr` models the __Writable_Iterator__ concept with respect to `v`.]
+    ]
+    [
+        [`lhs < rhs`]
+        [convertible to `bool`]
+        [`(0 < lhs - rhs)`]
+        [`<` is a total ordering relation]
+    ]
+    [
+        [`lhs > rhs`]
+        [convertible to `bool`]
+        [`rhs < lhs`]
+        [`>` is a total ordering relation]
+    ]
+    [
+        [`lhs >= rhs`]
+        [convertible to `bool`]
+        [`!(lhs < rhs)`]
+        []
+    ]
+    [
+        [`lhs <= rhs`]
+        [convertible to `bool`]
+        [`!(rhs < lhs)`]
+        []
+    ]
+]
+[endsect]
+
+[section Models]
+  * __concept_indexable_iterator_archetype__
+  * __concept_mutable_indexable_iterator_archetype__
+  * all models of the __Random_Access_Iterator__ concept
+  * all models of the __Random_Access_Traversal_Iterator__ concept
+[endsect]
+
+[endsect] [/ indexable_iterator]
+

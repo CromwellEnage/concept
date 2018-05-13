@@ -1,0 +1,121 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:accumulator Accumulator Concept]
+
+[section Description]
+An [*Accumulator] is a computational entity that stores its results internally
+for user code to extract in a separate step.
+[endsect]
+
+[section Requirements]
+The type `A` models the [*Accumulator] concept if, given a value `a` of type
+`A`, a value `c_a` of type `A const`, and a value `args` of type `Args const`
+such that `Args` models the __Argument_Pack__ concept, the following
+expressions are valid and exhibit the specified effects.
+
+[table
+    [[Expression][Description]]
+    [
+        [`A::result_type`]
+        [Defines the type of the values that `a.result(args)` may generate.]
+    ]
+    [
+        [`A a(args)`]
+        [
+            Constructs `a` using the specified __Argument_Pack__.  Models
+            of this concept typically start here at an initial value.
+        ]
+    ]
+    [
+        [`a(args)`]
+        [
+            Function call operator.  Models of this concept perform
+            accumulation here.
+        ]
+    ]
+    [
+        [`c_a.result(args)`]
+        [
+            Returns a value representing the cumulative result of all the
+            computations performed by `c_a` since its construction.
+        ]
+    ]
+]
+[endsect]
+
+[section Models]
+* __concept_accumulator_archetype__
+* __accumulators_impl_sum_impl__
+* __accumulators_impl_weighted_sum_impl__
+* __accumulators_impl_sum_kahan_impl__
+* __accumulators_impl_weighted_sum_kahan_impl__
+* __accumulators_impl_rolling_sum_impl__
+* __accumulators_impl_count_impl__
+* __accumulators_impl_rolling_count_impl__
+* __accumulators_impl_max_impl__
+* __accumulators_impl_min_impl__
+* __accumulators_impl_mean_impl__
+* __accumulators_impl_weighted_mean_impl__
+* __accumulators_impl_immediate_mean_impl__
+* __accumulators_impl_immediate_weighted_mean_impl__
+* __accumulators_impl_rolling_mean_impl__
+* __accumulators_impl_immediate_rolling_mean_impl__
+* __accumulators_impl_lazy_rolling_mean_impl__
+* __accumulators_impl_coherent_tail_mean_impl__
+* __accumulators_impl_non_coherent_tail_mean_impl__
+* __accumulators_impl_non_coherent_tail_mean_impl__
+* __accumulators_impl_pot_tail_mean_impl__
+* __accumulators_impl_error_of_mean_impl__
+* __accumulators_impl_median_impl__
+* __accumulators_impl_weighted_median_impl__
+* __accumulators_impl_with_density_median_impl__
+* __accumulators_impl_with_density_weighted_median_impl__
+* __accumulators_impl_with_p_square_cumulative_distribution_median_impl__
+* __accumulators_impl_with_p_square_cumulative_distribution_weighted_median_impl__
+* __accumulators_impl_moment_impl__
+* __accumulators_impl_weighted_moment_impl__
+* __accumulators_impl_rolling_moment_impl__
+* __accumulators_impl_variance_impl__
+* __accumulators_impl_weighted_variance_impl__
+* __accumulators_impl_lazy_variance_impl__
+* __accumulators_impl_lazy_weighted_variance_impl__
+* __accumulators_impl_lazy_rolling_variance_impl__
+* __accumulators_impl_immediate_rolling_variance_impl__
+* __accumulators_impl_covariance_impl__
+* __accumulators_impl_weighted_covariance_impl__
+* __accumulators_impl_density_impl__
+* __accumulators_impl_weighted_density_impl__
+* __accumulators_impl_kurtosis_impl__
+* __accumulators_impl_weighted_kurtosis_impl__
+* __accumulators_impl_peaks_over_threshold_impl__
+* __accumulators_impl_peaks_over_threshold_weighted_impl__
+* __accumulators_impl_peaks_over_threshold_prob_impl__
+* __accumulators_impl_weighted_peaks_over_threshold_prob_impl__
+* __accumulators_impl_pot_quantile_impl__
+* __accumulators_impl_extended_p_square_impl__
+* __accumulators_impl_weighted_extended_p_square_impl__
+* __accumulators_impl_p_square_cumulative_distribution_impl__
+* __accumulators_impl_weighted_p_square_cumulative_distribution_impl__
+* __accumulators_impl_p_square_quantile_impl__
+* __accumulators_impl_weighted_p_square_quantile_impl__
+* __accumulators_impl_extended_p_square_quantile_impl__
+* __accumulators_impl_skewness_impl__
+* __accumulators_impl_weighted_skewness_impl__
+* __accumulators_impl_tail_impl__
+* __accumulators_impl_tail_quantile_impl__
+* __accumulators_impl_weighted_tail_quantile_impl__
+* __accumulators_impl_tail_variate_impl__
+* __accumulators_impl_tail_variate_means_impl__
+* __accumulators_impl_weighted_tail_variate_means_impl__
+* __accumulators_impl_rolling_window_impl__
+* __accumulators_impl_rolling_window_plus1_impl__
+[endsect]
+
+[endsect] [/ accumulator]
+

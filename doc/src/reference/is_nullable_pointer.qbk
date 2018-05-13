@@ -1,0 +1,45 @@
+[/=============================================================================
+    Copyright (C) 2013-2015 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_nullable_pointer `is_nullable_pointer`]
+
+[section Synopsis]
+[reference__is_nullable_pointer]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the specified type fulfills the
+compile-time requirements of the __Nullable_Pointer__ concept, except that this
+metafunction does not test for the existence of value-initialization or copy
+constructors.  This metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_nullable_pointer__header__>
+``
+
+--or--
+
+``
+#include <__ds_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__ds_traits_fwd__header__>
+``
+[endsect]
+
+[section Test]
+See __is_nullable_pointer__test_source__.
+[endsect]
+
+[endsect] [/ is_nullable_pointer]
+

@@ -1,0 +1,117 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:is_subtraction_assignable `is_subtraction_assignable`]
+
+[section Synopsis]
+[reference__is_subtraction_assignable]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the type `T` implements the
+subtraction assignment operator such that the right-hand side is an lvalue
+reference to an object of type `Value`, and if the type
+`ResultPlaceholderExpr` evaluates to __mpl_true__ when passed in the result
+type of the subtraction assignment operator as its first argument type and the
+type `T` as its second argument type.  This metafunction evaluates to
+__mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be an __MPL_Lambda_Expression__ that can
+take in the result type of the subtraction assignment operator as its first
+argument type, take in `T` as its second argument type, and evaluate to a type
+for which __bct_is_mpl_boolean_constant__ evaluates to __mpl_true__.
+[endsect]
+
+[section:default_args Default argument types]
+[reference__is_subtraction_assignable__fwd]
+
+If the type `ResultPlaceholderExpr` is not specified, then this metafunction
+checks if the result type of the subtraction assignment operator is an lvalue
+reference of type `T`.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_subtraction_assignable__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__query__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[section Test]
+This metafunction checks for proper return types as far as lvalue references
+and type conversions are concerned, but otherwise it does not check for
+canonical correctness.  Note that `const`-qualified types are not addition
+assignable.
+
+[test__is_subtraction_assignable__minimal]
+
+All primitive types are subtraction-assignable to lvalues of the same type.
+
+[test__is_subtraction_assignable__builtin]
+
+All __Boost_Multiprecision__ numeric types are subtraction-assignable to
+lvalues of the same type.
+
+[test__is_subtraction_assignable__multiprecision]
+
+Only __Indexable_Iterator__ archetypes and
+__Random_Access_Traversal_Iterator__ archetypes are subtraction-assignable to
+instances of their difference types.
+
+[test__is_subtraction_assignable__archetypes]
+
+All iterators over __Random_Access_Container__ models provided by the C++
+standard library are subtraction-assignable to instances of their difference
+types.
+
+[test__is_subtraction_assignable__std_iterators]
+
+All __uBlas_Vector__ models are subtraction-assignable to lvalues of
+__uBlas_Vector_Expression__ models.
+
+[test__is_subtraction_assignable__ublas_vectors]
+
+All __uBlas_Matrix__ models are subtraction-assignable to lvalues of
+__uBlas_Matrix_Expression__ models.
+
+[test__is_subtraction_assignable__ublas_matrices]
+
+__uBlas_Storage__ models are not subtraction-assignable.
+
+[test__is_subtraction_assignable__ublas_storage]
+
+This metafunction can be useful for double-checking the type correctness of
+user-defined and standard-defined subtraction assignment operators.
+
+[test__is_subtraction_assignable__other]
+
+The full source file can be found at
+__is_subtraction_assignable__test_source__.
+[endsect]
+
+[endsect] [/ is_subtraction_assignable]
+

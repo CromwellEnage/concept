@@ -1,0 +1,29 @@
+[/============================================================================
+    Copyright (C) 2013-2017 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:bidirectional_rng_archetype `bidirectional_range_archetype`]
+
+[section Synopsis]
+[reference__bidirectional_range_archetype]
+[endsect]
+
+[section Description]
+Minimalist stub model of the __Bidirectional_Range__ concept.
+
+The following excerpt can be found in __bidirectional_range_archetype__test__.
+[test__bidirectional_range_archetype]
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__bidirectional_range_archetype__header__>
+``
+[endsect]
+
+[endsect] [/ bidirectional_rng_archetype]
+

@@ -1,0 +1,53 @@
+// Copyright (C) 2013-2018 Cromwell D. Enage
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+
+#ifndef BOOST_CONCEPT_TRAITS_QUERY_IS_RATIONAL_CONSTANT_HPP
+#define BOOST_CONCEPT_TRAITS_QUERY_IS_RATIONAL_CONSTANT_HPP
+
+#include <boost/concept/traits/query_fwd.hpp>
+#include <boost/concept/traits/introspection/nested_type/is_type_of.hpp>
+#include <boost/concept/traits/introspection/member_data/has_num.hpp>
+#include <boost/concept/traits/introspection/member_data/has_den.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/mpl/eval_if.hpp>
+
+//[reference__is_rational_constant
+namespace boost { namespace concept { namespace traits {
+
+    template <typename T>
+    struct is_rational_constant
+//<-
+#if defined(BOOST_CONCEPT_CONFIG_DOCUMENTATION)
+//->
+      : _mpl_eval_if_<
+            _bct_is_type_of_<T,T>
+          , _mpl_eval_if_<
+                _bct_has_num_<T>
+              , _bct_has_den_<T>
+              , _mpl_false_
+            >
+          , _mpl_false_
+        >::type
+//<-
+#else
+      : ::boost::mpl::eval_if<
+            ::boost::concept::traits::is_type_of<T,T>
+          , ::boost::mpl::if_<
+                ::boost::concept::traits::has_num<T>
+              , ::boost::concept::traits::has_den<T>
+              , ::boost::mpl::false_
+            >
+          , ::boost::mpl::false_
+        >::type
+#endif  // BOOST_CONCEPT_CONFIG_DOCUMENTATION
+//->
+    {
+    };
+}}}  // namespace boost::concept::traits
+//]
+
+#endif  // include guard
+

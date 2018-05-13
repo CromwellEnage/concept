@@ -1,0 +1,62 @@
+[/=============================================================================
+    Copyright (C) 2013-2015 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:has_find `has_find`]
+
+[section Synopsis]
+[reference__has_find]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the type `T` is defined with a
+`find` member function definition that takes in an r-value reference of type
+`Param`, and if the type `ResultPlaceholderExpr` evaluates to __mpl_true__ when
+passed in the result type of the `find` member function as its first argument
+type, `T` as its second argument type, and `Param` as its third argument if
+specified.  This metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be an __MPL_Lambda_Expression__ that can
+take in the result type of the `find` member function as its first argument
+type, take in `T` as its second argument type, and evaluate to a type for which
+__dst_is_mpl_boolean_constant__ evaluates to __mpl_true__.  If the type `Param`
+is specified, then the type `ResultPlaceholderExpr` must be able to take it in
+as its third argument type.
+[endsect]
+
+[section:default Default argument types]
+[reference__has_find__fwd]
+
+If the type `ResultPlaceholderExpr` is not specified, then this metafunction
+will determine whether or not the result type of the `find` member function
+is the `const`-matching iterator type of `T`.
+
+The type `Param` defaults to [`_std_remove_const_<T>::type::key_type].
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__has_find__header__>
+``
+
+--or--
+
+``
+#include <__ds_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__ds_traits_fwd__header__>
+``
+[endsect]
+
+[endsect] [/ has_find]
+

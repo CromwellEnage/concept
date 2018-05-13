@@ -1,0 +1,59 @@
+[/============================================================================
+    Copyright (C) 2012-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:declcref `declcref`]
+
+[section Synopsis]
+[reference__declcref]
+[endsect]
+
+[section Description]
+Allows a __decltype__ expression to obtain an lvalue reference-to-`const` to
+the specified type in an unevaluated context--that is, without requiring an
+object of that type to be constructed.
+
+The necessity of `declcref` stems from the inability to test whether or not
+certain non-modifying operations are defined for a type using __declval__,
+e.g.:
+
+``
+template <typename T>
+struct failed_tester
+{
+    template <typename B>
+    static long long
+        test(
+            typename _std_add_pointer_<
+                _decltype_(-_declval_<B>())
+            >::type
+        );
+
+    template <typename B>
+    static char test(...);
+
+    // This will never be equivalent to std::true_type.
+    typedef _std_integral_constant_<
+        bool, sizeof(
+            failed_tester<T>::test<T>(_std_nullptr_)
+        ) == sizeof(long long)
+    > type;
+};
+``
+
+By using `declcref` instead of __declval__, the test will succeed when passed
+in a type for which the negation operator is defined.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__declref__header__>
+``
+[endsect]
+
+[endsect] [/ declcref]
+

@@ -1,0 +1,60 @@
+[/=============================================================================
+    Copyright (C) 2013-2015 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:has_erase `has_erase`]
+
+[section Synopsis]
+[reference__has_erase]
+[endsect]
+
+[section Description]
+If the type `Param2` is specified, then this metafunction evaluates to
+__mpl_true__ if the type `T` is defined with a `erase` member function
+definition that takes in an r-value reference of type `Param1` and an r-value
+reference of type `Param2`, and if the type `ResultPlaceholderExpr` evaluates
+to __mpl_true__ when passed in the result type of the `erase` member function
+as its first argument type, the type `T` as its second argument type, the type
+`Param1` as its third argument type, and the type `Param2` as its fourth
+argument type.  If the type `Param2` is *not* specified, then this metafunction
+evaluates to __mpl_true__ if the type `T` is defined with a `erase` member
+function definition that takes in an r-value reference of type `Param1`, and if
+the type `ResultPlaceholderExpr` evaluates to __mpl_true__ when passed in the
+result type of the `erase` member function as its first argument type, the type
+`T` as its second argument type, and the type `Param1` as its third argument
+type.  This metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be an __MPL_Lambda_Expression__ that can
+take in the result type of the `erase` member function as its first argument
+type, take in `T` as its second argument type, take in `Param1` as its third
+argument type, and evaluate to a type for which __dst_is_mpl_boolean_constant__
+evaluates to __mpl_true__.  If the type `Param2` is specified, then the type
+`ResultPlaceholderExpr` must be able to take it in as its fourth argument type.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__has_erase__header__>
+``
+
+--or--
+
+``
+#include <__ds_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__ds_traits_fwd__header__>
+``
+[endsect]
+
+[endsect] [/ has_erase]
+

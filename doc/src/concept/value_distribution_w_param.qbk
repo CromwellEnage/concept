@@ -1,0 +1,70 @@
+[/============================================================================
+    Copyright (C) 2014-2017 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:value_distribution_w_param Value Distribution With Param Concept]
+
+[section Description]
+A [*Value Distribution With Param] is a function object that returns values
+within a range that is specific to the distribution object.  The [*Value
+Distribution With Param] concept has the same requirements as the
+__Random_Number_Distribution__ concept, except that:
+  * The values returned by the function call operator are not required to be
+    uniform, random, or even numeric.
+  * Neither the `reset()` method nor the stream operators are required.
+[endsect]
+
+[section Requirements]
+The type `D` models the [*Value Distribution With Param] concept if:
+  * The type `D` also models the __Value_Distribution__ concept.
+  * The type `D` also models the __Equality_Comparable__ concept.
+  * The following expressions are valid and respect the stated semantics.
+
+Given:
+  * a value `d` of type `D`
+  * a potentially constant value `d_c` of type `D`
+  * a potentially constant value `d_p` whose type is the parameter type of `D`
+
+[table
+    [[Expression][Description][Type requirements][Complexity]]
+    [
+        [`D::param_type`]
+        [Defines the parameter type of `D`.]
+        [
+            This type must model the __Copy_Constructible__,
+            __Copy_Assignable__, and __Equality_Comparable__ concepts.
+        ]
+        [Compile-time]
+    ]
+    [
+        [`D::param_type::distribution_type`]
+        [Defines the distribution type of `D::param_type`.]
+        [[^_std_is_same_<D,D::param_type::distribution_type>]]
+        [Compile-time]
+    ]
+    [
+        [`d_c.param()`]
+        [Returns the parameters of the distribution.]
+        [The return type must be the same as `D::param_type`.]
+        [Constant runtime]
+    ]
+    [
+        [`d.param(d_p)`]
+        [Sets the parameters of the distribution.]
+        []
+        [Constant runtime]
+    ]
+]
+[endsect]
+
+[section Models]
+  * __concept_value_distribution_with_param_archetype__
+  * all models of the __Random_Number_Distribution__ concept
+[endsect]
+
+[endsect] [/ value_distribution_w_param]
+

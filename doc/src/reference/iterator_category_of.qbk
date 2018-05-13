@@ -1,0 +1,47 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:iterator_category_of `iterator_category_of`]
+
+[section Synopsis]
+[reference__iterator_category_of]
+[endsect]
+
+[section Description]
+This metafunction returns the __iterator_category__ of the
+__std_iterator_traits__ of the specified type if it is not a
+__Boost_TypeErasure_placeholder__.  This metafunction is safe to instantiate
+with such placeholders in a __Boost_TypeErasure_deduced__ context.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__iterator_category_of__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__trivial_access__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[endsect] [/ iterator_category_of]
+

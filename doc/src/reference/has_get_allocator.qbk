@@ -1,0 +1,74 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:has_get_allocator `has_get_allocator`]
+
+[section Synopsis]
+[reference__has_get_allocator]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the type `T` is defined with a
+zero-argument `get_allocator` member function definition.  If the type
+`ResultPlaceholderExpr` is also specified, then it must evaluate to
+__mpl_true__ when passed in the result type of the `get_allocator` member
+function as its first argument type and the type `T` as its second argument
+type.  If the type `ResultPlaceholderExpr` is not specified, then the type `T`
+must be defined with a nested `allocator_type` type definition that is the
+result type of the `get_allocator` member function and for which
+__bct_is_allocator__ evaluates to __mpl_true__.  This metafunction evaluates to
+__mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be an __MPL_Lambda_Expression__ that can
+take in the result type of the `get_allocator` member function as its first
+argument type, take in `T` as its second argument type, and evaluate to a type
+for which __bct_is_mpl_boolean_constant__ evaluates to __mpl_true__.
+[endsect]
+
+[section:default Default argument types]
+[reference__has_get_allocator__fwd]
+
+If the type `ResultPlaceholderExpr` is not specified, then this metafunction
+checks if the result type of the `get_allocator` member function is
+`T::allocator_type`.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__has_get_allocator__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__member_function__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[section Test]
+It is possible to use this metafunction to test whether or not the specified
+type models the __Allocator_Aware_Container__ concept.  See
+__has_get_allocator__test_source__.
+[endsect]
+
+[endsect] [/ has_get_allocator]
+

@@ -1,0 +1,67 @@
+[/=============================================================================
+    Copyright (C) 2005-2015 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_mpl_static_constant `is_mpl_static_constant`]
+
+[section Synopsis]
+[reference__is_mpl_static_constant]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the specified type meets the
+criteria required by __dst_is_std_integral_constant__ as well as the following
+criteria:
+
+  * It is defined with a nested `tag` type definition that is
+    __mpl_integral_c_tag__.
+  * It is defined with a nested `type` type definition such that
+    [`_mpl_equal_to_<T,T::type>] evaluates to __mpl_true__.
+
+This metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_mpl_static_constant__header__>
+``
+
+--or--
+
+``
+#include <__ds_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__ds_traits_fwd__header__>
+``
+[endsect]
+
+[section Test]
+All models of the __MPL_Integral_Constant__ concept, and all metafunctions that
+evaluate to types which model the __MPL_Integral_Constant__ concept, meet the
+criteria required by this metafunction.
+
+[test__is_mpl_static_constant__boost_mpl]
+
+All type-checking and property-querying metafunctions provided by
+__Boost_Type_Traits__ evaluate to types which meet these criteria as well.
+
+[test__is_mpl_static_constant__type_traits]
+
+The same does *not* go for all type-checking and property-querying
+metafunctions provided by __Cxx11_Type_Traits__.
+
+[test__is_mpl_static_constant__std_type_traits]
+
+The full source file can be found at __is_mpl_static_constant__test_source__.
+[endsect]
+
+[endsect] [/ is_mpl_static_constant]
+

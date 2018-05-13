@@ -1,0 +1,82 @@
+[/============================================================================
+    Copyright (C) 2013-2018 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:is_pre_decrementable `is_pre_decrementable`]
+
+[section Synopsis]
+[reference__is_pre_decrementable]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if the specified type implements
+the pre-decrement operator; it evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_pre_decrementable__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__query__header_fwd__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header_fwd__>
+``
+[endsect]
+
+[section Test]
+By default, this metafunction checks for proper return types as far as lvalue
+references and type conversions are concerned, but otherwise it does not check
+for canonical correctness.  Note that `const`-qualified types are not
+pre-decrementable.
+
+[test__is_pre_decrementable__minimal]
+
+All primitive types are pre-decrementable.
+
+[test__is_pre_decrementable__builtin]
+
+All __Boost_Multiprecision__ integer and rational types are pre-decrementable.
+
+[test__is_pre_decrementable__multiprecision]
+
+Only __Bidirectional_Traversal_Iterator__ archetypes and refinement archetypes
+are pre-decrementable.
+
+[test__is_pre_decrementable__archetypes]
+
+All iterators over __Reversible_Container__ models provided by the C++
+standard library are pre-decrementable.
+
+[test__is_pre_decrementable__std_iterators]
+
+This metafunction can be useful for double-checking the type correctness of
+user-defined and standard-defined arithmetic types.  However, use more
+restrictive metafunctions when the need for tighter requirements arises, such
+as __bct_is_bidirectional_iterator__ to detect __Bidirectional_Iterator__
+models.
+
+[test__is_pre_decrementable__other]
+
+The full source file can be found at __is_pre_decrementable__test_source__.
+[endsect]
+
+[endsect] [/ is_pre_decrementable]
+

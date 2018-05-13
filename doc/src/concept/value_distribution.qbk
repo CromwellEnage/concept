@@ -1,0 +1,68 @@
+[/============================================================================
+    Copyright (C) 2014-2017 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+============================================================================/]
+
+[section:value_distribution Value Distribution Concept]
+
+[section Description]
+A [*Value Distribution] is a function object that returns values within a
+range that is specific to the distribution object.  The [*Value Distribution]
+concept has the same requirements as the __Value_Distribution_With_Param__
+concept, except that it does not require parameters to be set or returned.
+[endsect]
+
+[section Requirements]
+The type `D` models the [*Value Distribution] concept if, given:
+  * a type `G` that models the __Value_Generator__ concept
+  * a value `g` of type `G`
+  * a value `d` of type `D`
+  * a potentially constant value `d_c` of type `D`
+
+The following expressions are valid and exhibit the specified effects.
+
+[table
+    [[Expression][Description][Type requirements][Complexity]]
+    [
+        [`D::result_type`]
+        [Defines the type of the values that `D` may generate.]
+        [[^_bct_is_less_than_comparable_<D::result_type>]]
+        [Compile-time]
+    ]
+    [
+        [`d_c.min()`]
+        [
+            Returns the minimum value of the distribution, which is the
+            greatest lower bound that the function call operator may return.
+        ]
+        [[^_std_is_same_<_decltype_(d_c.min()),D::result_type>]]
+        [Constant runtime]
+    ]
+    [
+        [`d_c.max()`]
+        [
+            Returns the maximum value of the distribution, which is the
+            least upper bound that the function call operator may return.
+        ]
+        [[^_std_is_same_<_decltype_(d_c.max()),D::result_type>]]
+        [Constant runtime]
+    ]
+    [
+        [`d(g)`]
+        [Returns a value in the closed interval `[d.min(), d.max()]`.]
+        [[^_std_is_same_<_decltype_(d(g)),D::result_type>]]
+        [Amortized constant runtime]
+    ]
+]
+[endsect]
+
+[section Models]
+  * __concept_value_distribution_archetype__
+  * all models of the __Value_Distribution_With_Param__ concept
+[endsect]
+
+[endsect] [/ value_distribution]
+

@@ -1,0 +1,86 @@
+[/=============================================================================
+    Copyright (C) 2014-2016 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:is_callable `is_callable`]
+
+[section Synopsis]
+[reference__is_callable]
+[endsect]
+
+[section Description]
+This metafunction evaluates to __mpl_true__ if __cxx14_result_of__ is defined
+with a nested `type` type definition when it takes in `T` as its argument type;
+furthermore, if the type `ResultPlaceholderExpr` is specified, then it must
+evaluate to __mpl_true__ when it takes in [`_cxx14_result_of_<T>] as its
+argument type.  This metafunction evaluates to __mpl_false__ otherwise.
+[endsect]
+
+[section:type_requirements Type requirements]
+The type `ResultPlaceholderExpr` must be an __MPL_Lambda_Expression__ that can
+take in [`_cxx14_result_of_<T>] as its argument type and evaluate to
+a type for which __bct_is_mpl_boolean_constant__ evaluates to
+__mpl_true__.
+[endsect]
+
+[section:default Default argument types]
+[reference__is_callable__fwd]
+
+If the type `ResultPlaceholderExpr` is not specified, then it defaults to a
+__Metafunction_Class__ that always evaluates to __mpl_true__.
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__is_callable__header__>
+``
+
+--or--
+
+``
+#include <__concept_traits__header__>
+``
+
+Forward declaration:
+
+``
+#include <__concept_traits_fwd__header__>
+``
+[endsect]
+
+[section Test]
+This metafunction can be used to determine whether a function call signature
+represents a valid expression.
+
+[test__is_callable__std_adaptors]
+
+This metafunction can work on either free function types or member function
+types.  Also, since member object pointers are __Callable__, this metafunction
+evaluates to __mpl_true__ on their types as well.
+
+[test__is_callable__members]
+
+This metafunction evaluates to __mpl_false__ if the function call signature
+does not represent a valid expression.  For example, a single-argument function
+call signature is invalid for an __Adaptable_Unary_Function__ model, and a
+two-argument function call signature is invalid for an
+__Adaptable_Binary_Function__ model.
+
+[test__is_not_callable]
+
+This metafunction can be used in conjunction with __bct_is_boolean_expression__
+to determine whether or not the type represented by the function call signature
+models the __Predicate__ concept.
+
+[test__is_callable_predicate__std_adaptors]
+
+The full source files can be found at __is_callable__test_source__ and
+__is_callable__predicate_test_source__.
+[endsect]
+
+[endsect] [/ is_callable]
+

@@ -1,0 +1,31 @@
+[/=============================================================================
+    Copyright (C) 2013-2017 Cromwell D. Enage
+
+    Distributed under the Boost Software License, Version 1.0.
+    (See accompanying file LICENSE_1_0.txt or copy at
+    [@http://www.boost.org/LICENSE_1_0.txt])
+=============================================================================/]
+
+[section:mut_index_itr_archetype `mutable_indexable_iterator_archetype`]
+
+[section Synopsis]
+[reference__mutable_indexable_iterator_archetype]
+[endsect]
+
+[section Description]
+Minimalist stub model of the __Indexable_Iterator__ and __Writable_Iterator__
+concepts.
+
+The following excerpt can be found in
+__mutable_indexable_iterator_archetype__test__.
+[test__mutable_indexable_iterator_archetype]
+[endsect]
+
+[section:definition Where defined]
+``
+#include <__mutable_indexable_iterator_archetype__header__>
+``
+[endsect]
+
+[endsect] [/ mut_index_itr_archetype]
+
